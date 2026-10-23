@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 90vh;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+    padding-left: 100px;
+    background-color: #000;
+}
+
+.theatre {
+    position: relative;
+    width: min(90%, 1100px);
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
+    isolation: isolate;
+}
+
+.theatre::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url(assets/TheatreYoshiIsland.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.game-board {
+    position: absolute;
+    top: 12%;
+    left: 10%;
+    width: 80%;
+    height: 76%;
+    overflow: hidden;
+    z-index: 1;
+
+    background-image: url(assets/BGgame1.png);
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    background-position: 0  center;
+
+    animation: background-scroll 15s linear infinite;
+}
+
+.pipe {
+    position: absolute;
+    bottom: 20px;
+    height: 90px;
+    width: 80px;
+    animation: pipe-animation 1.5s infinite linear;
+}
+
+.chain-chomp {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 20px; 
+    left: 85px;
+}
+
+/* .jump {
+    animation: jump 500ms ease-in-out;
+} */
+
+.chain-chomp.jump {
+    animation: jump 500ms ease-in-out;
+}
+
+/* O jogo fica pausado até começar */
+.game-board,
+.pipe,
+.chain-chomp {
+    animation-play-state: paused;
+}
+
+/* Libera as animações enquanto o jogo estiver rodando */
+body.playing .game-board,
+body.playing .pipe,
+body.playing .chain-chomp {
+    animation-play-state: running;
+}
+
+/* Modais */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-overlay[hidden] {
+    display: none !important;
+}
+
+.modal {
+    width: min(100%, 400px);
+    padding: 35px 25px;
+    border: 3px solid #fff;
+    border-radius: 15px;
+
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.modal h1 {
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+
+.modal p {
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+.modal button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+
+    background-color: #39a845;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: background-color 0.2s;
+}
+
+.modal button:hover {
+    background-color: #287d31;
+}
+
+@keyframes pipe-animation {
+    from {
+        right: -80px;
+    }
+
+    to {
+        right: 100%;
+    }
+}
+
+@keyframes jump {
+    0% {
+        bottom: 20px;
+    }
+    20% {
+        bottom: 130px;
+    }
+    40% {
+        bottom: 190px;
+    }
+    50% {
+        bottom: 220px;
+    }
+    60% {
+        bottom: 190px;
+    }
+    80% {
+        bottom: 130px;
+    }
+    100% {
+        bottom: 20px;
+    }
+}
+
+@keyframes background-scroll {
+    from {
+        background-position: 0  center;
+    }
+
+    to {
+        background-position: -1275px center;
+    }
+}

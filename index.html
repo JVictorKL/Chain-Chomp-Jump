@@ -12,35 +12,47 @@
 
     <audio id="background-music" src="assets/BGmusic.mp3" loop></audio>
 
-    <div class="theatre">
+    <div class="game-layout">
 
-        <div class="game-board">
-
-            <img src="assets/ChainChomp.webp" class="chain-chomp jump">
-            <img src="assets/pipe.png" class="pipe">
-
+        <div class="theatre">
+            <div class="game-board">
+                <img src="assets/ChainChomp.webp" class="chain-chomp jump">
+                <img src="assets/spike.png" class="spike">
+            </div>
         </div>
-    </div>
-</body>
 
-    <!-- Modal inicial -->
+        <div class="instructions">
+            <img src="assets/Up Arrow White.png" alt="Up Arrow">
+            <img class="yoshi" src="assets/YoshiJump.png" alt="Yoshi">
+            <img src="assets/Space White.png" alt="Space">
+        </div>
+
+    </div>
+
+    </div>
+
     <div class="modal-overlay" id="start-modal">
         <div class="modal">
-            <h1>Chain Chomp Jump</h1>
-            <p>Press "Start" to begin and "Space" or "↑" to Jump!</p>
-            <button id="start-button">Start</button>
+            <h1>
+                <img src="assets/Start Game.png" alt="Start Game">
+            </h1>
+            <button id="start-button">
+                <img src="assets/StartG.png" alt="Start">
+            </button>
         </div>
     </div>
 
-    <!-- Modal de Game Over -->
     <div class="modal-overlay" id="game-over-modal" hidden>
         <div class="modal">
-            <h1>Game Over!</h1>
-            <p>Try again.</p>
-            <button id="restart-button">Restart</button>
+            <h1>
+                <img src="assets/Game Over.png" alt="Game Over">
+            </h1>
+            <button id="restart-button">
+                <img src="assets/Restart.png" alt="Restart">
+            </button>
         </div>
     </div>
 
-
 <script src="script.js"></script>
+</body>
 </html>

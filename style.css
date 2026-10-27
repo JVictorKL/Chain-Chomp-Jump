@@ -5,19 +5,29 @@
 }
 
 body {
-    height: 90vh;
-    width: 90%;
+    height: 100vh;
+    width: 100%;
+    display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 100px;
+    padding-left: 30px;
     background-color: #000;
+}
+
+.game-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 1500px;
 }
 
 .theatre {
     position: relative;
-    width: min(90%, 1100px);
+    width: min(80%, 1100px);
     aspect-ratio: 16 / 9;
-    margin: 0 auto;
+    flex-shrink: 1;
     isolation: isolate;
 }
 
@@ -31,6 +41,27 @@ body {
     background-size: 100% 100%;
     z-index: 2;
     pointer-events: none;
+}
+
+.instructions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    width: 150px;
+    flex-shrink: 0;
+}
+
+.instructions img {
+    display: block;
+    max-width: 100%;
+    height: 60px;
+    object-fit: contain;
+}
+
+.instructions .yoshi {
+    height: 200px;
 }
 
 .game-board {
@@ -50,12 +81,12 @@ body {
     animation: background-scroll 15s linear infinite;
 }
 
-.pipe {
+.spike {
     position: absolute;
     bottom: 20px;
     height: 90px;
     width: 80px;
-    animation: pipe-animation 1.5s infinite linear;
+    animation: spike-animation 1.5s infinite linear;
 }
 
 .chain-chomp {
@@ -66,29 +97,22 @@ body {
     left: 85px;
 }
 
-/* .jump {
-    animation: jump 500ms ease-in-out;
-} */
-
 .chain-chomp.jump {
     animation: jump 500ms ease-in-out;
 }
 
-/* O jogo fica pausado até começar */
 .game-board,
-.pipe,
+.spike,
 .chain-chomp {
     animation-play-state: paused;
 }
 
-/* Libera as animações enquanto o jogo estiver rodando */
 body.playing .game-board,
-body.playing .pipe,
+body.playing .spike,
 body.playing .chain-chomp {
     animation-play-state: running;
 }
 
-/* Modais */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -107,15 +131,15 @@ body.playing .chain-chomp {
 }
 
 .modal {
+    background-image: url(assets/BlackBoard.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
     width: min(100%, 400px);
+    height: min(100%, 250px);
     padding: 35px 25px;
-    border: 3px solid #fff;
     border-radius: 15px;
-
-    background-color: #222;
-    color: #fff;
     text-align: center;
-    font-family: Arial, sans-serif;
 }
 
 .modal h1 {
@@ -123,30 +147,29 @@ body.playing .chain-chomp {
     font-size: 30px;
 }
 
-.modal p {
-    margin-bottom: 25px;
-    font-size: 16px;
+.modal h1 img {
+    width: 60%;
 }
 
 .modal button {
-    padding: 12px 25px;
+    background-color: rgba(0, 0, 0, 0);
     border: none;
-    border-radius: 8px;
+}
 
-    background-color: #39a845;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
+.modal button img{
+    height: 90px;
+    border: none;
     cursor: pointer;
-
-    transition: background-color 0.2s;
+    transition: scale 0.4s;
 }
 
-.modal button:hover {
-    background-color: #287d31;
+
+
+.modal button img:hover {
+    scale: 1.07;
 }
 
-@keyframes pipe-animation {
+@keyframes spike-animation {
     from {
         right: -80px;
     }
